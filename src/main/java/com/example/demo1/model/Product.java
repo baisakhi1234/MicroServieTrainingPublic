@@ -19,9 +19,9 @@ public class Product {
     @Column (name = "price")
     private double productPrice;
 
-    public Product(ProductType type,double price) {
+    public Product(String type,double price) {
         super();
-        this.productType=type;
+        this.productType=ProductType.valueOf(type);
         this.productPrice=price;
     }
 }
