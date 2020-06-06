@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean id="theCricketCoach" class="org.example.beans.CricketCoach" >
+      <property name="fortuneService" ref="theHappyFortune"/>
+  </bean>
+    <bean id="theBasketBallCoach" class="org.example.beans.BasketBallCoach" >
+        <property name="fortuneService" ref="theBadFortune"/>
+    </bean>
+    <bean id="theHappyFortune" class="org.example.beans.HappyFortuneService" />
+    <bean id="theBadFortune" class="org.example.beans.BadFortuneService" />
+ </beans>
