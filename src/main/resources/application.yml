@@ -1,0 +1,14 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: service-discovery
+  boot:
+    admin:
+      client:
+        url: http://localhost:8763
+  cloud:
+    config:
+      url: http://localhost:8764
+
+
