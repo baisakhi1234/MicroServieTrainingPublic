@@ -19,6 +19,6 @@ public class UserController {
     @GetMapping  ("/status/check")
     public String check(){
 
-        return  "User service working "+env.getProperty("server.port");
+        return  "User service working in port : "+ env.getProperty("local.server.port");
     }
 }

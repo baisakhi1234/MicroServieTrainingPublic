@@ -14,10 +14,14 @@ spring:
         enabled: true
   application:
     name: user-ws
+  boot:
+    admin:
+      client:
+        url: http://localhost:8763
+  cloud:
+    config:
+      url: http://localhost:8764
+
 eureka:
-  client:
-    service-url:
-      defailtZone: http://localhost:8761/eureka
-    register-with-eureka: true
   instance:
     instance-id: ${spring.application.name}.${spring.aplication.instance_id:${random.value}}
