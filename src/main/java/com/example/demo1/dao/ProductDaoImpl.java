@@ -1,5 +1,6 @@
 package com.example.demo1.dao;
 
+import com.example.demo1.exception.ProductNotFoundException;
 import com.example.demo1.model.Product;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,11 @@ public class ProductDaoImpl implements ProductDao{
 
     @Override
     @Transactional
-    public Product getProductById(int id) {
+    public Product getProductById(int id) throws ProductNotFoundException {
         Session session = entityManager.unwrap(Session.class);
+        Product product=session.get(Product.class,id);
+        if (product == null)
+            throw new ProductNotFoundException(id);
         return session.get(Product.class,id);
     }
 
@@ -53,5 +57,12 @@ public class ProductDaoImpl implements ProductDao{
         Session session = entityManager.unwrap(Session.class);
         Product producet=session.get(Product.class,id);
         session.delete(producet);
+    }
+    @Override
+    @Transactional
+    public Product updateProduct(Product product) {
+        Session session = entityManager.unwrap(Session.class);
+        session.saveOrUpdate(product);
+        return product;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo1.service;
 
 import com.example.demo1.dao.ProductDao;
+import com.example.demo1.exception.ProductNotFoundException;
 import com.example.demo1.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +27,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(int id) {
+    public Product getProductById(int id) throws ProductNotFoundException {
         return productDao.getProductById(id);
     }
 
     @Override
     public void removeProduct(int id) {
         productDao.removeProduct(id);
+    }
+    @Override
+    public Product updateProduct(Product product) {
+        return productDao.updateProduct(product);
     }
 }
