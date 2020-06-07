@@ -10,3 +10,7 @@ spring:
   devtools:
     restart:
       enabled: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:8763
